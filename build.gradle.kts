@@ -19,10 +19,10 @@ signing {
 
 tasks {
     compileJava {
-        options.release.set(11)
+        options.release.set(21)
     }
     compileKotlin {
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.jvmTarget = "21"
     }
 }
 
@@ -38,12 +38,9 @@ java {
 publishing {
     kotlin.runCatching {
         repositories {
-            maven("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                name = "ossrh"
-                credentials(PasswordCredentials::class) {
-                    username = (property("ossrhUsername") ?: return@credentials) as String
-                    password = (property("ossrhPassword") ?: return@credentials) as String
-                }
+            maven("https://maven.kitpvp.world/public-releases") {
+                name = "kitpvp"
+                credentials(PasswordCredentials::class)
             }
         }
     }.onFailure {
@@ -76,11 +73,11 @@ publishing {
                     }
                 }
 
-                url.set("https://github.com/mooziii/alert")
+                url.set("https://github.com/notstevy/alert")
 
                 scm {
-                    connection.set("scm:git:git://github.com/mooziii/alert.git")
-                    url.set("https://github.com/mooziii/alert/tree/main")
+                    connection.set("scm:git:git://github.com/notstevy/alert.git")
+                    url.set("https://github.com/notstevy/alert/tree/main")
                 }
             }
         }
