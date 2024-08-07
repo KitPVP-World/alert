@@ -3,11 +3,11 @@ plugins {
     id("java")
     id("maven-publish")
     id("signing")
-    kotlin("jvm") version "1.8.20"
+    kotlin("jvm") version "2.0.0"
 }
 
 group = "me.obsilabor"
-version = "1.0.8"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
