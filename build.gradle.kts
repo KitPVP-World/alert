@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("java-library")
     id("java")
@@ -18,12 +20,15 @@ signing {
     sign(publishing.publications)
 }
 
-tasks {
-    compileJava {
-        options.release.set(21)
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
-    compileKotlin {
-        kotlinOptions.jvmTarget = "21"
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_21)
     }
 }
 
@@ -54,7 +59,7 @@ publishing {
             artifact(jarThing.get())
 
             this.groupId = project.group.toString()
-            this.artifactId = project.name.toLowerCase()
+            this.artifactId = project.name.lowercase()
             this.version = project.version.toString()
 
             pom {
@@ -74,11 +79,11 @@ publishing {
                     }
                 }
 
-                url.set("https://github.com/notstevy/alert")
+                url.set("https://github.com/KitPvP-World/alert")
 
                 scm {
-                    connection.set("scm:git:git://github.com/notstevy/alert.git")
-                    url.set("https://github.com/notstevy/alert/tree/main")
+                    connection.set("scm:git:git://github.com/KitPvP-World/alert.git")
+                    url.set("https://github.com/KitPvP-World/alert/tree/main")
                 }
             }
         }
