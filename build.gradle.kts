@@ -39,7 +39,7 @@ publishing {
     kotlin.runCatching {
         repositories {
             maven("https://maven.kitpvp.world/public-releases") {
-                name = "kitpvp"
+                name = "kitpvpWorldRepository"
                 credentials(PasswordCredentials::class)
             }
         }
@@ -83,4 +83,3 @@ publishing {
         }
     }
 }
-
