@@ -14,6 +14,7 @@ repositories {
 }
 
 signing {
+    useGpgCmd()
     sign(publishing.publications)
 }
 
